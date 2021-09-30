@@ -39,15 +39,29 @@ class Perceptron:
 
         """
         self.w_ = np.zeros(1 + X.shape[1])
-
         # TODO: Put your code
+
+        for _ in self.n_iter:
+            for n in X:
+                print("hola")
+                z = self.__net_input(self, n)
+                if z>=0:
+                    y_nova = 1
+                else:
+                    y_nova = -1
+                #Actualizar pesos
+
+                w_act = self.w_[n] + (self.eta*(y[n]-y_nova)*n)
+                self.w_[n] = w_act
+
+
         return self
 
     def __net_input(self, X):
         """Calculate net input"""
 
         # TODO: Put your code
-
+        return np.dot(X,self.w_)
     def predict(self, X):
         """Return class label"""
 
