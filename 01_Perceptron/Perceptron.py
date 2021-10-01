@@ -42,8 +42,9 @@ class Perceptron:
         # TODO: Put your code
 
         for _ in self.n_iter:
+
             for n in X:
-                print("hola")
+
                 z = self.__net_input(self, n)
                 if z>=0:
                     y_nova = 1
@@ -51,10 +52,10 @@ class Perceptron:
                     y_nova = -1
                 #Actualizar pesos
 
-                w_act = self.w_[n] + (self.eta*(y[n]-y_nova)*n)
-                self.w_[n] = w_act
-
-
+                error = y[n]-y_nova
+                dist = error*self.eta
+                for i_w in self.w_:
+                    self.w_[n] = X[i_w]*dist
         return self
 
     def __net_input(self, X):
