@@ -10,9 +10,9 @@ X, y = make_classification(n_samples=100, n_features=2, n_redundant=0, n_repeate
 y[y == 0] = -1  # La nostra implementació esta pensada per tenir les classes 1 i -1.
 
 # TODO: descomentar en tenir implementat
-# perceptron = Perceptron()
-# perceptron.fit(X, y)
-# y_prediction = perceptron.predict(X)
+perceptron = Perceptron()
+perceptron.fit(X, y)
+y_prediction = perceptron.predict(X)
 
 #  Mostram els resultats
 plt.figure(1)
