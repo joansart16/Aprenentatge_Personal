@@ -40,30 +40,28 @@ class Perceptron:
         """
         self.w_ = np.zeros(1 + X.shape[1])
         # TODO: Put your code
+        self.errors_ = []
+        for _ in range(self.n_iter):
+            errors = 0
+            for xi, target in zip(X, y):
 
-        for _ in self.n_iter:
+                update = self.eta * (target - self.predict(xi))
 
-            for n in X:
+                self.w_[1:] += update*xi
+                
 
-                z = self.__net_input(self, n)
-                if z>=0:
-                    y_nova = 1
-                else:
-                    y_nova = -1
-                #Actualizar pesos
-
-                error = y[n]-y_nova
-                dist = error*self.eta
-                for i_w in self.w_:
-                    self.w_[n] = X[i_w]*dist
         return self
 
     def __net_input(self, X):
         """Calculate net input"""
 
         # TODO: Put your code
-        return np.dot(X,self.w_)
+
+        #Provar si també funcionaria fora separar els arrays
+        return np.dot(X,self.w_[1:])+self.w_[0]
     def predict(self, X):
         """Return class label"""
-
+        return np.where(self.__net_input(X) >= 0.0, 1, -1)
         # TODO: Put your code
+
+
