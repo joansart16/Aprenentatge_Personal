@@ -18,7 +18,7 @@ class Perceptron:
         Number of misclassifications in every epoch.
 
     """
-    def __init__(self, eta=0.01, n_iter=10):
+    def __init__(self, eta=0.0001, n_iter=10):
         self.eta = eta
         self.n_iter = n_iter
 

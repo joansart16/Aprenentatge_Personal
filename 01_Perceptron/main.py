@@ -18,4 +18,19 @@ y_prediction = perceptron.predict(X)
 plt.figure(1)
 
 plt.scatter(X[:, 0], X[:, 1], c=y)
+
+minim = np.min(X[:, 0])
+maxim = np.max(X[:, 0])
+
+first_coordinate = (minim, (-perceptron.w_[0]-(perceptron.w_[1]*minim)) / perceptron.w_[2])
+second_coordinate = (maxim, (-perceptron.w_[0]-(perceptron.w_[1]*maxim)) / perceptron.w_[2])
+
+plt.plot([first_coordinate[0], second_coordinate[0]], [first_coordinate[1], second_coordinate[1]])
+
+plt.figure(2)
+plt.plot(perceptron.errors_, marker='o')
+plt.xlabel('Epochs')
+plt.ylabel('Number of misclassifications')
 plt.show()
+
+print(perceptron.w_)

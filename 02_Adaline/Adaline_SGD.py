@@ -1,3 +1,5 @@
+#Joan Sart Vizcaíno
+
 import numpy as np
 from numpy.random import seed
 
@@ -50,6 +52,21 @@ class AdalineSGD(object):
 
         # TODO: Put your code here. Notau que heu d'avaluar si s'han de mesclar les mostres.
 
+        self.w_ = np.zeros(1 + X.shape[1])
+        self.errors_ = []
+
+        for _ in range(self.n_iter):
+            errors = 0
+            if self.shuffle:
+                X, y = self.__shuffle(X,y)
+
+            for xi, target in zip(X, y):
+                error = target - self.activation(xi)
+                update = self.eta * error
+                self.w_[1:] += update * xi
+                self.w_[0] += update
+                errors += pow(error,2)
+            self.errors_.append(errors/X.shape[0])
         return self
 
     def __shuffle(self, X, y):
