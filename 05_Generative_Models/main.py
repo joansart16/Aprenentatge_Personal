@@ -71,26 +71,26 @@ print(data.shape)
 
 
 #GaussianMixture
-# n_components = np.arange(1, 500, 50)
-# models = [GaussianMixture(n, covariance_type='full', random_state=0)
-#           for n in n_components]
-# aics = [model.fit(data).bic(data) for model in models]
-# plt.figure()
-# plt.plot(n_components, aics)
-#
-# n_components = np.arange(1, 20, 1)
-# models = [GaussianMixture(n, covariance_type='full', random_state=0)
-#           for n in n_components]
-# aics = [model.fit(data).bic(data) for model in models]
-# plt.figure()
-# plt.plot(n_components, aics)
-#
-# n_components = np.arange(65, 75, 1)
-# models = [GaussianMixture(n, covariance_type='full', random_state=0)
-#           for n in n_components]
-# aics = [model.fit(data).bic(data) for model in models]
-# plt.figure()
-# plt.plot(n_components, aics)
+n_components = np.arange(1, 500, 50)
+models = [GaussianMixture(n, covariance_type='full', random_state=0)
+          for n in n_components]
+aics = [model.fit(data).bic(data) for model in models]
+plt.figure()
+plt.plot(n_components, aics)
+
+n_components = np.arange(1, 20, 1)
+models = [GaussianMixture(n, covariance_type='full', random_state=0)
+          for n in n_components]
+aics = [model.fit(data).bic(data) for model in models]
+plt.figure()
+plt.plot(n_components, aics)
+
+n_components = np.arange(65, 75, 1)
+models = [GaussianMixture(n, covariance_type='full', random_state=0)
+          for n in n_components]
+aics = [model.fit(data).bic(data) for model in models]
+plt.figure()
+plt.plot(n_components, aics)
 
 gmm = GaussianMixture(72, covariance_type='full', random_state=0)
 gmm.fit(data)
